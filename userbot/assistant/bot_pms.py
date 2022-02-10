@@ -48,9 +48,9 @@ async def check_bot_started_users(user, event):
     check = get_starter_details(user.id)
     if check is None:
         start_date = str(datetime.now().strftime("%B %d, %Y"))
-        notification = f"👤 {_format.mentionuser(user.first_name , user.id)} has started me.\
-                \n**ID: **`{user.id}`\
-                \n**Name: **{get_display_name(user)}"
+        notification = f"يالشيخ طال عمرك {_format.mentionuser(user.first_name , user.id)}\n هالملقوف فتح بوتك تبيني العنه لك ولا اتعوذ من الشبطان ؟.\
+                \n**ايديه: **`{user.id}`\
+                \n**اسمه: **{get_display_name(user)}"
     else:
         start_date = check.date
         notification = f"👤 {_format.mentionuser(user.first_name , user.id)} has restarted me.\
@@ -103,16 +103,14 @@ async def bot_start(event):
                 my_mention=my_mention,
             )
         else:
-            start_msg = f"Hey! 👤{mention},\
-                        \nI am {my_mention}'s assistant bot.\
-                        \nYou can contact to my master from here.\
-                        \n\nPowered by [Catuserbot](https://t.me/catuserbot)"
+            start_msg = f"اهلا حبيبي! {mention},\
+                        معاك الشيخ حسام تفضل كيف أخدمك ؟"
         buttons = [
             (
-                Button.url("Repo", "https://github.com/sandy1709/catuserbot"),
+                Button.url("بعثرة مشاعر", "https://t.me/IS7SII"),
                 Button.url(
-                    "Deploy",
-                    "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FMr-confused%2Fcatpack&template=https%3A%2F%2Fgithub.com%2FMr-confused%2Fcatpack",
+                    "Owner",
+                    "https://t.me/LLL3d",
                 ),
             )
         ]
