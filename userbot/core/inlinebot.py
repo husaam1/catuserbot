@@ -385,10 +385,10 @@ async def inline_handler(event):  # sourcery no-metrics
             timestamp = int(time.time() * 2)
             newsecret = {str(timestamp): {"userid": u, "text": txct}}
 
-            buttons = [Button.inline("show message 🔐", data=f"secret_{timestamp}")]
+            buttons = [Button.inline("فتح الهمسه ♪", data=f"secret_{timestamp}")]
             result = builder.article(
                 title="secret message",
-                text=f"🔒 A whisper message to {sandy}, Only he/she can open it.",
+                text=f"🔒 رسالة بيني وبين الحلو ذا {sandy}, لاتحاول تفكها عشان مانزعل من بعض.",
                 buttons=buttons,
             )
             await event.answer([result] if result else None)
@@ -577,9 +577,9 @@ async def inline_handler(event):  # sourcery no-metrics
         result = types.InputBotInlineResult(
             id=str(uuid4()),
             type="photo",
-            title="𝘾𝙖𝙩𝙐𝙨𝙚𝙧𝙗𝙤𝙩",
+            title="𝗙𝗼𝗿 𝗵𝘂𝘀𝘀𝗮𝗺 ♪",
             description="Deploy yourself",
-            url="https://github.com/Jisan09/catuserbot",
+            url="وش تدور حبيبي ؟ ",
             thumb=photo,
             content=photo,
             send_message=types.InputBotInlineMessageMediaAuto(
