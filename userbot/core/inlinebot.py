@@ -578,8 +578,8 @@ async def inline_handler(event):  # sourcery no-metrics
             id=str(uuid4()),
             type="photo",
             title="𝗙𝗼𝗿 𝗵𝘂𝘀𝘀𝗮𝗺 ♪",
-            description="Deploy yourself",
-            url="وش تدور حبيبي ؟ ",
+            description="وش تدور حبيبي ؟",
+            url="https://t.me/IS7SII",
             thumb=photo,
             content=photo,
             send_message=types.InputBotInlineMessageMediaAuto(
