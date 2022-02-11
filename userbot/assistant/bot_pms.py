@@ -48,7 +48,7 @@ async def check_bot_started_users(user, event):
     check = get_starter_details(user.id)
     if check is None:
         start_date = str(datetime.now().strftime("%B %d, %Y"))
-        notification = f"يالشيخ طال عمرك , هالملقوف فتح بوتك تبيني العنه لك ولا اتعوذ من الشبطان ؟.\
+        notification = f"يالشيخ طال عمرك , هالملقوف فتح بوتك تبيني العنه لك ولا اتعوذ من الشيطان ؟.\
                 \n**𝗜𝗱 : **`{user.id}`\
                 \n**𝗡𝗮𝗺𝗲 : **{get_display_name(user)}"
     else:
