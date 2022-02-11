@@ -48,9 +48,9 @@ async def check_bot_started_users(user, event):
     check = get_starter_details(user.id)
     if check is None:
         start_date = str(datetime.now().strftime("%B %d, %Y"))
-        notification = f"يالشيخ طال عمرك {_format.mentionuser(user.first_name , user.id)}\n هالملقوف فتح بوتك تبيني العنه لك ولا اتعوذ من الشبطان ؟.\
-                \n**ايديه: **`{user.id}`\
-                \n**اسمه: **{get_display_name(user)}"
+        notification = f"يالشيخ طال عمرك , هالملقوف فتح بوتك تبيني العنه لك ولا اتعوذ من الشبطان ؟.\
+                \n**𝗜𝗱 : **`{user.id}`\
+                \n**𝗡𝗮𝗺𝗲 : **{get_display_name(user)}"
     else:
         start_date = check.date
         notification = f"👤 {_format.mentionuser(user.first_name , user.id)} has restarted me.\
@@ -103,8 +103,7 @@ async def bot_start(event):
                 my_mention=my_mention,
             )
         else:
-            start_msg = f"اهلا حبيبي! {mention},\
-                        معاك الشيخ حسام تفضل كيف أخدمك ؟"
+            start_msg = f"اهلا حبيبي! {mention},\معاك الشيخ حسام تفضل كيف أخدمك ؟"
         buttons = [
             (
                 Button.url("بعثرة مشاعر", "https://t.me/IS7SII"),
@@ -115,8 +114,8 @@ async def bot_start(event):
             )
         ]
     else:
-        start_msg = "Hey Master!\
-            \nHow can i help you ?"
+        start_msg = "أهلا بالشيخ!\
+            \nكيف اقدر اخدمك حبيبي ؟"
         buttons = None
     try:
         await event.client.send_message(
