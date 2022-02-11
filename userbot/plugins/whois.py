@@ -63,7 +63,7 @@ async def fetch_info(replied_user, event):
     caption += f"<b>• 𝗨𝘀𝗲𝗿 𖦹</b> {username}\n"
     caption += f"<b>• 𝗜𝗱 𖦹</b> <code>{user_id}</code>\n"
     caption += f"<b>• 𝗕𝗶𝗼 𖦹</b> {user_bio}\n"
-➖
+    caption += f"<b> ➖\n"
     return photo, caption
 
 
