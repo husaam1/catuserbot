@@ -30,7 +30,7 @@ from .logger import logging
 LOGS = logging.getLogger(__name__)
 
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
-CATLOGO = "https://telegra.ph/file/493268c1f5ebedc967eba.jpg"
+CATLOGO = "https://telegra.ph/file/4b6824d7458ade3cd2a5e.jpg"
 tr = Config.COMMAND_HAND_LER
 
 
@@ -53,8 +53,8 @@ def ibuild_keyboard(buttons):
 
 
 def main_menu():
-    text = f"𝗖𝗮𝘁𝗨𝘀𝗲𝗿𝗯𝗼𝘁 𝗛𝗲𝗹𝗽𝗲𝗿\
-        \n𝗣𝗿𝗼𝘃𝗶𝗱𝗲𝗱 𝗯𝘆 {mention}"
+    text = f"جميع أوامر البوت\
+        \nالاوامر للشيخ {mention}"
     buttons = [
         (Button.inline("ℹ️ Info", data="check"),),
         (
@@ -75,7 +75,7 @@ def main_menu():
                 f"⚰️ Useless ({len(GRP_INFO['useless'])})", data="useless_menu"
             ),
         ),
-        (Button.inline("🔒 Close Menu", data="close"),),
+        (Button.inline("إغلاق القائمة ♪", data="close"),),
     ]
 
     return text, buttons
