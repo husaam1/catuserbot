@@ -56,14 +56,14 @@ def main_menu():
     text = f"جميع أوامر البوت\
         \nالاوامر للشيخ {mention}"
     buttons = [
-        (Button.inline("ℹ️ Info", data="check"),),
+        (Button.inline("ℹ️ معلومات", data="check"),),
         (
-            Button.inline(f"👮‍♂️ Admin ({len(GRP_INFO['admin'])})", data="admin_menu"),
-            Button.inline(f"🤖 Bot ({len(GRP_INFO['bot'])})", data="bot_menu"),
+            Button.inline(f"👮‍♂️ ادمن ({len(GRP_INFO['admin'])})", data="admin_menu"),
+            Button.inline(f"🤖 بوت ({len(GRP_INFO['bot'])})", data="bot_menu"),
         ),
         (
-            Button.inline(f"🎨 Fun ({len(GRP_INFO['fun'])})", data="fun_menu"),
-            Button.inline(f"🧩 Misc ({len(GRP_INFO['misc'])})", data="misc_menu"),
+            Button.inline(f"🎨 تسليه ({len(GRP_INFO['fun'])})", data="fun_menu"),
+            Button.inline(f"🧩 متفرقات ({len(GRP_INFO['misc'])})", data="misc_menu"),
         ),
         (
             Button.inline(f"🧰 Tools ({len(GRP_INFO['tools'])})", data="tools_menu"),
@@ -560,10 +560,10 @@ async def inline_handler(event):  # sourcery no-metrics
     else:
         buttons = [
             (
-                Button.url("Source code", "https://github.com/Jisan09/catuserbot"),
+                Button.url("𝗖𝗵𝗮𝗻𝗻𝗲𝗹 ♪", "https://t.me/IS7SII"),
                 Button.url(
-                    "Deploy",
-                    "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FMr-confused%2Fcatpack&template=https%3A%2F%2Fgithub.com%2FMr-confused%2Fcatpack",
+                    "𝗡𝗼𝘁𝗵𝗶𝗻𝗴 ♪",
+                    "https://t.me/LLL3d",
                 ),
             )
         ]
@@ -572,7 +572,7 @@ async def inline_handler(event):  # sourcery no-metrics
             url=CATLOGO, size=0, mime_type="image/jpeg", attributes=[]
         )
         text, msg_entities = await event.client._parse_message_text(
-            "𝗗𝗲𝗽𝗹𝗼𝘆 𝘆𝗼𝘂𝗿 𝗼𝘄𝗻 𝗖𝗮𝘁𝗨𝘀𝗲𝗿𝗯𝗼𝘁.", "md"
+            "ماتراه مني أنت من أخترت أن تراه ♪ .", "md"
         )
         result = types.InputBotInlineResult(
             id=str(uuid4()),
