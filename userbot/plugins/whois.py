@@ -141,7 +141,7 @@ async def _(event):
 
 @catub.cat_cmd(
     pattern="whois(?:\s|$)([\s\S]*)",
-    command=("whois", plugin_category),
+    command=("كشف", plugin_category),
     info={
         "header": "Gets info of an user.",
         "description": "User compelete details.",
@@ -155,7 +155,7 @@ async def who(event):
     replied_user, reason = await get_user_from_event(event)
     if not replied_user:
         return
-    cat = await edit_or_reply(event, "`Fetching userinfo wait....`")
+    cat = await edit_or_reply(event, "عطني لحظة ..")
     replied_user = await event.client(GetFullUserRequest(replied_user.id))
     try:
         photo, caption = await fetch_info(replied_user, event)
