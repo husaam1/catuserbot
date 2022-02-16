@@ -33,7 +33,7 @@ async def _(event):
         await event.client.send_message(BOTLOG_CHATID, "#RESTART \n" "Bot Restarted")
     sandy = await edit_or_reply(
         event,
-        "Restarted. `.ping` me or `.help` to check if I am online, actually it takes 1-2 min for restarting",
+        "جاري إعادة تشغيل البوت ♪ ..",
     )
     try:
         ulist = get_collectionlist_items()
