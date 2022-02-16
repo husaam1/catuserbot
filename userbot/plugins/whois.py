@@ -58,7 +58,7 @@ async def fetch_info(replied_user, event):
     last_name = last_name.replace("\u2060", "") if last_name else (" ")
     username = "@{}".format(username) if username else ("This User has no Username")
     user_bio = "This User has no About" if not user_bio else user_bio
-    caption = "<b><i>- 𝚂𝚖𝚒𝚕𝚎,𝙽𝚘𝚋𝚘𝚍𝚢 𝚌𝚊𝚛𝚎𝚜 𝚑𝚘𝚠 𝚢𝚘𝚞 𝚏𝚎𝚎𝚕 ♪ ..</i></b>\n\n"
+    caption = "<b><i>- 𝚂𝚖𝚒𝚕𝚎, 𝙽𝚘𝚋𝚘𝚍𝚢 𝚌𝚊𝚛𝚎𝚜 𝚑𝚘𝚠 𝚢𝚘𝚞 𝚏𝚎𝚎𝚕 ♪ ..</i></b>\n\n"
     caption += f"<b>• 𝗡𝗮𝗺𝗲 𖦹</b> {first_name} {last_name}\n"
     caption += f"<b>• 𝗨𝘀𝗲𝗿 𖦹</b> {username}\n"
     caption += f"<b>• 𝗜𝗱 𖦹</b> <code>{user_id}</code>\n"
@@ -81,7 +81,7 @@ async def _(event):
     replied_user, error_i_a = await get_user_from_event(event)
     if not replied_user:
         return
-    catevent = await edit_or_reply(event, "`Fetching userinfo wait....`")
+    catevent = await edit_or_reply(event, "عطني لحظة ..")
     replied_user = await event.client(GetFullUserRequest(replied_user.id))
     user_id = replied_user.user.id
     # some people have weird HTML in their names
