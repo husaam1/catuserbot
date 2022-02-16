@@ -103,7 +103,7 @@ async def bot_start(event):
                 my_mention=my_mention,
             )
         else:
-            start_msg = f"اهلا حبيبي! {mention},\معاك الشيخ حسام تفضل كيف أخدمك ؟"
+            start_msg = f"اهلا حبيبي! {mention} معاك الشيخ حسام تفضل كيف أخدمك ؟"
         buttons = [
             (
                 Button.url("بعثرة مشاعر", "https://t.me/IS7SII"),
