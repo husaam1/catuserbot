@@ -131,7 +131,7 @@ async def set_group_photo(event):  # sourcery no-metrics
 
 
 @catub.cat_cmd(
-    pattern="promote(?:\s|$)([\s\S]*)",
+    pattern="رفع مشرف(?:\s|$)([\s\S]*)",
     command=("promote", plugin_category),
     info={
         "header": "To give admin rights for a person",
@@ -160,12 +160,12 @@ async def promote(event):
         rank = "Admin"
     if not user:
         return
-    catevent = await edit_or_reply(event, "`Promoting...`")
+    catevent = await edit_or_reply(event, "جاري رفعه مشرف")
     try:
         await event.client(EditAdminRequest(event.chat_id, user.id, new_rights, rank))
     except BadRequestError:
         return await catevent.edit(NO_PERM)
-    await catevent.edit("`Promoted Successfully! Now gib Party`")
+    await catevent.edit("تم رفعه مشرف يستاهل")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
@@ -176,7 +176,7 @@ async def promote(event):
 
 
 @catub.cat_cmd(
-    pattern="demote(?:\s|$)([\s\S]*)",
+    pattern="تنزيل مشرف(?:\s|$)([\s\S]*)",
     command=("demote", plugin_category),
     info={
         "header": "To remove a person from admin list",
@@ -195,7 +195,7 @@ async def demote(event):
     user, _ = await get_user_from_event(event)
     if not user:
         return
-    catevent = await edit_or_reply(event, "`Demoting...`")
+    catevent = await edit_or_reply(event, "جاري تنزيله")
     newrights = ChatAdminRights(
         add_admins=None,
         invite_users=None,
@@ -209,7 +209,7 @@ async def demote(event):
         await event.client(EditAdminRequest(event.chat_id, user.id, newrights, rank))
     except BadRequestError:
         return await catevent.edit(NO_PERM)
-    await catevent.edit("`Demoted Successfully! Betterluck next time`")
+    await catevent.edit("تم تنزيله من الإشراف ، مايستاهل")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
@@ -220,7 +220,7 @@ async def demote(event):
 
 
 @catub.cat_cmd(
-    pattern="ban(?:\s|$)([\s\S]*)",
+    pattern="حظر(?:\s|$)([\s\S]*)",
     command=("ban", plugin_category),
     info={
         "header": "Will ban the guy in the group where you used this command.",
@@ -240,8 +240,8 @@ async def _ban_person(event):
     if not user:
         return
     if user.id == event.client.uid:
-        return await edit_delete(event, "__You cant ban yourself.__")
-    catevent = await edit_or_reply(event, "`Whacking the pest!`")
+        return await edit_delete(event, "__ماتقدر تحظر نفسك يالشيخ .__")
+    catevent = await edit_or_reply(event, "تم حظره لانه قليل أدب")
     try:
         await event.client(EditBannedRequest(event.chat_id, user.id, BANNED_RIGHTS))
     except BadRequestError:
@@ -281,7 +281,7 @@ async def _ban_person(event):
 
 
 @catub.cat_cmd(
-    pattern="unban(?:\s|$)([\s\S]*)",
+    pattern="الغاء الحظر(?:\s|$)([\s\S]*)",
     command=("unban", plugin_category),
     info={
         "header": "Will unban the guy in the group where you used this command.",
@@ -300,11 +300,11 @@ async def nothanos(event):
     user, _ = await get_user_from_event(event)
     if not user:
         return
-    catevent = await edit_or_reply(event, "`Unbanning...`")
+    catevent = await edit_or_reply(event, "جاري الغاء حظره")
     try:
         await event.client(EditBannedRequest(event.chat_id, user.id, UNBAN_RIGHTS))
         await catevent.edit(
-            f"{_format.mentionuser(user.first_name ,user.id)} `is Unbanned Successfully. Granting another chance.`"
+            f"{_format.mentionuser(user.first_name ,user.id)} تم الغاء حظره ، عساه يعقل ."
         )
         if BOTLOG:
             await event.client.send_message(
@@ -329,7 +329,7 @@ async def watcher(event):
 
 
 @catub.cat_cmd(
-    pattern="mute(?:\s|$)([\s\S]*)",
+    pattern="كتم(?:\s|$)([\s\S]*)",
     command=("mute", plugin_category),
     info={
         "header": "To stop sending messages from that user",
@@ -354,13 +354,13 @@ async def startmute(event):
                 "`This user is already muted in this chat ~~lmfao sed rip~~`"
             )
         if event.chat_id == catub.uid:
-            return await edit_delete(event, "`You cant mute yourself`")
+            return await edit_delete(event, "ماعاش من يكتمك يالشيخ")
         try:
             mute(event.chat_id, event.chat_id)
         except Exception as e:
             await event.edit(f"**Error **\n`{e}`")
         else:
-            await event.edit("`Successfully muted that person.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **`")
+            await event.edit("تم كتمه قليل الأدب")
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
@@ -373,13 +373,13 @@ async def startmute(event):
         creator = chat.creator
         if not admin and not creator:
             return await edit_or_reply(
-                event, "`You can't mute a person without admin rights niqq.` ಥ﹏ಥ  "
+                event, "للأسف ماتقدر تكتمه يالشيخ  "
             )
         user, reason = await get_user_from_event(event)
         if not user:
             return
         if user.id == catub.uid:
-            return await edit_or_reply(event, "`Sorry, I can't mute myself`")
+            return await edit_or_reply(event, "ماعاش من يكتمك يالشيخ")
         if is_muted(user.id, event.chat_id):
             return await edit_or_reply(
                 event, "`This user is already muted in this chat ~~lmfao sed rip~~`"
@@ -402,11 +402,11 @@ async def startmute(event):
                 if chat.admin_rights.delete_messages is not True:
                     return await edit_or_reply(
                         event,
-                        "`You can't mute a person if you dont have delete messages permission. ಥ﹏ಥ`",
+                        "للأسف ماتقدر تكتمه يالشيخ خيرها بغيرها",
                     )
             elif "creator" not in vars(chat):
                 return await edit_or_reply(
-                    event, "`You can't mute a person without admin rights niqq.` ಥ﹏ಥ  "
+                    event, "للأسف ماتقدر تكتمه يالشيخ خيرها بغيرها  "
                 )
             mute(user.id, event.chat_id)
         except Exception as e:
@@ -432,7 +432,7 @@ async def startmute(event):
 
 
 @catub.cat_cmd(
-    pattern="unmute(?:\s|$)([\s\S]*)",
+    pattern="الغاء الكتم(?:\s|$)([\s\S]*)",
     command=("unmute", plugin_category),
     info={
         "header": "To allow user to send messages again",
@@ -452,7 +452,7 @@ async def endmute(event):
         replied_user = await event.client(GetFullUserRequest(event.chat_id))
         if not is_muted(event.chat_id, event.chat_id):
             return await event.edit(
-                "`__This user is not muted in this chat__\n（ ^_^）o自自o（^_^ ）`"
+                "مو مكتوم شوف غيره"
             )
         try:
             unmute(event.chat_id, event.chat_id)
@@ -460,7 +460,7 @@ async def endmute(event):
             await event.edit(f"**Error **\n`{e}`")
         else:
             await event.edit(
-                "`Successfully unmuted that person\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍`"
+                "تم الغاء كتمه"
             )
         if BOTLOG:
             await event.client.send_message(
@@ -502,7 +502,7 @@ async def endmute(event):
 
 
 @catub.cat_cmd(
-    pattern="kick(?:\s|$)([\s\S]*)",
+    pattern="طرد(?:\s|$)([\s\S]*)",
     command=("kick", plugin_category),
     info={
         "header": "To kick a person from the group",
