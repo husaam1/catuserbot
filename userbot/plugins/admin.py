@@ -241,7 +241,7 @@ async def _ban_person(event):
         return
     if user.id == event.client.uid:
         return await edit_delete(event, "__ماتقدر تحظر نفسك يالشيخ .__")
-    catevent = await edit_or_reply(event, "تم حظره لانه قليل أدب")
+    catevent = await edit_or_reply(event, "جاري حظره")
     try:
         await event.client(EditBannedRequest(event.chat_id, user.id, BANNED_RIGHTS))
     except BadRequestError:
@@ -260,7 +260,7 @@ async def _ban_person(event):
         )
     else:
         await catevent.edit(
-            f"{_format.mentionuser(user.first_name ,user.id)} `is banned !!`"
+            f"تم حظره : {_format.mentionuser(user.first_name ,user.id)}"
         )
     if BOTLOG:
         if reason:
@@ -281,7 +281,7 @@ async def _ban_person(event):
 
 
 @catub.cat_cmd(
-    pattern="الغاء الحظر(?:\s|$)([\s\S]*)",
+    pattern="الغاء حظر(?:\s|$)([\s\S]*)",
     command=("unban", plugin_category),
     info={
         "header": "Will unban the guy in the group where you used this command.",
@@ -360,7 +360,7 @@ async def startmute(event):
         except Exception as e:
             await event.edit(f"**Error **\n`{e}`")
         else:
-            await event.edit("تم كتمه قليل الأدب")
+            await event.edit("تم كتمه")
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
@@ -389,7 +389,7 @@ async def startmute(event):
             if result.participant.banned_rights.send_messages:
                 return await edit_or_reply(
                     event,
-                    "`This user is already muted in this chat ~~lmfao sed rip~~`",
+                    "مكتوم من قبل هالمسكين !",
                 )
         except AttributeError:
             pass
@@ -414,13 +414,13 @@ async def startmute(event):
         if reason:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `is muted in {get_display_name(await event.get_chat())}`\n"
+                f"تم كتم هالتيس : {_format.mentionuser(user.first_name ,user.id)} {get_display_name(await event.get_chat())}\n"
                 f"`Reason:`{reason}",
             )
         else:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `is muted in {get_display_name(await event.get_chat())}`\n",
+                f"تم كتم هالتيس : {_format.mentionuser(user.first_name ,user.id)} {get_display_name(await event.get_chat())}\n",
             )
         if BOTLOG:
             await event.client.send_message(
@@ -490,7 +490,7 @@ async def endmute(event):
             return await edit_or_reply(event, f"**Error : **`{e}`")
         await edit_or_reply(
             event,
-            f"{_format.mentionuser(user.first_name ,user.id)} `is unmuted in {get_display_name(await event.get_chat())}\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍`",
+            f"هالتيس : {_format.mentionuser(user.first_name ,user.id)} تم الغاء كتمه من هنا - {get_display_name(await event.get_chat())}\n",
         )
         if BOTLOG:
             await event.client.send_message(
@@ -521,17 +521,17 @@ async def endmute(event):
     user, reason = await get_user_from_event(event)
     if not user:
         return
-    catevent = await edit_or_reply(event, "`Kicking...`")
+    catevent = await edit_or_reply(event, "جاري طرده ..")
     try:
         await event.client.kick_participant(event.chat_id, user.id)
     except Exception as e:
         return await catevent.edit(NO_PERM + f"\n{e}")
     if reason:
         await catevent.edit(
-            f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}"
+            f"تم طرده : [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}"
         )
     else:
-        await catevent.edit(f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`")
+        await catevent.edit(f"`تم طرده :` [{user.first_name}](tg://user?id={user.id})`!`")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
